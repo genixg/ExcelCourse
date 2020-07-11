@@ -7,6 +7,8 @@
   },
   "rules": {
     "semi": "off",
+    "max-len": "off",
+    "operator-linebreak": "off",
     "linebreak-style": "off",
     "arrow-parens": "off",
     "comma-dangle": "off",
