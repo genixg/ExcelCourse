@@ -25,19 +25,28 @@ export function createTable(rowsCount = 15, colsCount = 30) {
 }
 
 function createRow(rowNumber, colsCount, content) {
+  const resize = rowNumber ? '<div class="row-resize" data-resize="row"></div>' : ''
   return `
-    <div class="row">
-        <div class="row-info">${rowNumber ? rowNumber : ''}</div>
+    <div class="row" data-type="resizable">
+        <div class="row-info">
+            ${rowNumber ? rowNumber : ''}
+            ${resize}
+        </div>
         <div class="row-data">${content}</div>
     </div>`
 }
 
-function toColumn(colName) {
-  return `<div class="column">${colName}</div>`
+function toColumn(colName, index) {
+  return `
+    <div class="column" data-type="resizable" data-col="${index}">
+      ${colName}
+      <div class="col-resize" data-resize="col"></div>
+    </div>
+    `
 }
 
-function toCell() {
-  return `<div contenteditable class="cell"></div>`
+function toCell(_, index) {
+  return `<div contenteditable class="cell" data-col="${index}"></div>`
 }
 
 function toChar(_, index) {
